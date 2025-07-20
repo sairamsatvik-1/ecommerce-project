@@ -10,10 +10,12 @@ console.log(userId);
   if (!userId) return res.status(401).json({ message: 'Login required' });
 
   try {
-    const review = await Review.findOneAndUpdate(
-      { productId, userId },
-      { rating },
-      { upsert: true, new: true }
+    const objectProductId = new mongoose.Types.ObjectId(productId);
+        const objectUserId = new mongoose.Types.ObjectId(userId);
+       const review = await Review.findOneAndUpdate(
+            { productId: objectProductId, userId: objectUserId },
+            { rating },
+            { upsert: true, new: true, runValidators: true }
     );
     res.json({ success: true, review });
   } catch (err) {
