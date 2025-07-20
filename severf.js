@@ -197,7 +197,7 @@ app.get("/logout",async (req,res)=>{
           });
     }
 });
-const reviewRoutes = require('./routes/reviews');
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
