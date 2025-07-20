@@ -5,6 +5,7 @@ const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
+const reviewRoutes = require('./routes/reviews');
 const bodyParser = require('body-parser');
 const cartRoutes = require('./routes/cartRoutes'); 
 const bcrypt = require('bcrypt');
