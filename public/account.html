@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title><style>
+        body{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .box{
+            box-shadow: 10px 10px 10px rgb(0, 0 ,0,0.7);
+            border: 2px solid black;
+         border-radius: 20px;  
+width:400px;
+
+        }
+        .header{
+            border-radius: 20px 20px 0px 0px;
+            background-color: rgb(16, 16, 60);
+        font-size: 50px;
+        color: rgb(21, 255, 0);    
+        display:flex;
+        height: 80px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        
+        .header img{
+            max-width: 90%;
+           
+            height:38px;
+            padding: 0;
+            margin: 0;
+            border-radius: 5px;
+        }
+        .form{
+           display: flex;
+           align-items: center;
+           flex-direction: column;
+        }
+        .form h2{
+            width: 100%;
+            margin-top: 0px;
+            background-color: rgb(255, 221, 0);
+            text-align: center;
+        }
+        form{
+            width: 90%;
+            
+            padding: 0 10px 20px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 25px;
+            gap:5px;
+        }
+        input{
+            margin-top: 5px;
+font-size: 25px;
+border-radius: 5px;
+text-align: right;
+        }
+        form>button{
+            margin-top:10px;
+            font-size: 20px;
+            padding: 5px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgb(255, 219, 100);
+        }
+       .bottom{ display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+       }
+        .bottom button{
+            cursor: pointer;
+            background-color: rgb(255, 208, 99);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <div class="header">
+        <img src="image.png"alt="shop"><p>MYShop</p>
+    </div>
+<div class="form">
+    <h2>Please Login........</h2>
+    <form>
+       <label>Enter email:<input type="email" id="email" required placeholder="Enter your email id"></label>
+       <label>Enter Password:<input type="password" id="password" required placeholder="Enter your Password"></label> 
+       <span id="loginerror" style="color:red"></span>
+       <button class="Login" type="submit">Login</button>
+       
+      </form>
+    </div><div class="bottom">
+        <div>Don't you have an account <button class="signupform">Signup</button></div>
+    <div>Fogot password<button class="forgotpassword">Forgot password</button></div>
+ 
+</div>
+</div>
+<script src="account.js"></script>
+</body>
+</html>

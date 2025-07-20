@@ -1,0 +1,11 @@
+# Dependencies
+/node_modules
+
+# Environment variables - VERY IMPORTANT
+.env
+.env.local
+.env.development.local
+
+# Build folder
+/build
+/dist

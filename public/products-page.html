@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your main stylesheet -->
+  <style>
+    .products-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+    .products-card {
+      width: 200px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .product-image {
+      width: 100%;
+      height: auto;
+    }
+    .rating-stars {
+      margin: 10px 0;
+      display: inline-block;
+    }
+    .product-price {
+      font-weight: bold;
+      color: #2d2d2d;
+    }
+    .view-more-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .view-more-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>All Products</h1>
+    <nav>
+      <button class="view-more-btn" id="back-to-home">Back to Home</button>
+    </nav>
+  </header>
+
+  <div class="products-container">
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+
+  <script>
+    // Get the section from the URL
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section');  // 'feature-1', 'feature-2', or 'feature-3'
+
+    // Fetch the products from the backend
+    fetch(`/api/products?section=${section}`)
+      .then(res => res.json())
+      .then(products => {
+        displayProducts(products);
+      })
+      .catch(err => console.error('Error fetching products:', err));
+
+    // Function to display products
+    function displayProducts(products) {
+      const productGrid = document.getElementById('products-grid');
+      products.forEach(async (product) => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('products-card', product.category, product.subcategory);
+
+        productDiv.innerHTML = `
+          <h3 class="product-name">${product.name}</h3>
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+          <h6 style="display:none">${product.description}</h6>
+          <p class="product-price">$${product.price}</p>
+          <span class="rating-stars"></span>
+          <div class='buttons'>
+            <button onclick="addCart('${product.name}', ${product.price}, '${product.image}')">Add to Cart</button>
+            <button class="quick-view">Quick View</button>
+          </div>
+        `;
+        productGrid.appendChild(productDiv);
+
+        const starDiv = productDiv.querySelector('.rating-stars');
+        try {
+          const res = await fetch(`/api/reviews/${product._id}`, { credentials: 'include' });
+          const data = await res.json();
+          const avg = Math.round(data.average);
+          starDiv.innerHTML = '';
+          for (let i = 1; i <= 5; i++) {
+            const span = document.createElement('span');
+            span.innerHTML = '&#9733;';
+            span.style.cssText = i <= avg ? 'color: gold; text-shadow: 0 0 5px black;' : 'color: gray;';
+            starDiv.appendChild(span);
+          }
+        } catch (err) {
+          console.error('Error fetching rating for product:', product.name);
+          for (let i = 1; i <= 5; i++) {
+            const span = document.createElement('span');
+            span.innerHTML = '☆';
+            starDiv.appendChild(span);
+          }
+          const span = document.createElement('span');
+          span.innerHTML = 'No ratings yet';
+          span.style.cssText = 'font-size: 5px; color: black;';
+          starDiv.appendChild(span);
+        }
+      });
+    }
+
+    // Go back to home page
+    document.getElementById('back-to-home').addEventListener('click', () => {
+      window.location.href = '/myproject.html'; 
+    });
+  </script>
+</body>
+</html>

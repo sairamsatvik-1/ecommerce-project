@@ -1,0 +1,117 @@
+.model{
+  border:4px solid black;;
+   width:410px;
+   border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;  
+    z-index: 1000;
+    top:50%;
+    left: 50%;
+height: 600px;
+scrollbar-width: none;
+display: block;
+pointer-events: none;
+ position:fixed;
+    transform: translate(-50%,100%) scale(0.5);
+    opacity: 0;
+    padding-top:10px ;  
+    transition: transform 0.6s ease,opacity 0.6s ease;;
+}.model-content {
+    max-height: 600px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+    
+}
+
+.model.open{
+    
+    pointer-events: auto;
+    transform:  translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+.model.top{
+    max-height: 400px;
+    overflow-y: auto;
+}
+.model-info{
+
+    display:flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.mimage{
+    border-radius: 10px;
+   width: 100%;
+    height: 400px;
+    align-items: center;
+}
+.model-top{
+    margin-top: 0px;
+}
+.model-head{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.model-head>h3{
+    width:420px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.mprice{
+    font-size:30px;
+    width: 60%;
+    text-align: center;
+    background-color: rgb(11, 10, 52);
+    padding: 10px;
+    border-radius: 50%;
+    color: rgb(255, 213, 4);}
+    .mdes h4{
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    .mdes{
+    width: 95%;
+    
+    background-color: rgb(224, 211, 211);
+    border: 2px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    scrollbar-width: none;
+}
+.modal-close {
+    position: absolute;
+    top: -1px; 
+    right: -40px; 
+    border: 1px solid black;
+    background-color: rgba(214, 195, 195, 0);;
+    color: rgb(255, 223, 223);
+    border-radius: 4px;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+   
+  }
+  .modal-close:hover{
+    background-color: rgba(0, 0, 0, 0.4);;
+    color: rgb(255, 18, 18);
+    border: 2px solid white;
+  }
+.model-info button{
+    width: 70%;
+    font-size: 30px;
+    background-color: #ff9900;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}

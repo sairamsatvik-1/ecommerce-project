@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myshop</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
+    <link href="pmodel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body >
+    <a href="/dummy.html"><button>Give Review</button></a>
+
+  <header class="header">
+       <div class="division1">
+   
+         <div class="logoim"><img src="image.png"alt="shop">MYShop</div>
+        <div class="search-bar"><input type="search" id="search-bar" placeholder="search"> <button>search</button></div>
+       
+        <div class="nav-links">
+            <div class="profile-container" >
+                <a href="#" class="profile" style="display:none">Profile</a>
+                <div class="profilemodel"></div>
+              </div> 
+              <a href="account.html" class="loginlink">Login/signup</a>
+              <a href="#" id="cart" onclick="cart()"><i  class="fas fa-shopping-cart cart-icon"><span id="cp" >✨</span><span id="cp1" class="up1">✨</span><span id="cp2">✨</span></i><span class="count">(<span id="cart-count">0</span>)</span></a>
+        </div>
+    </div>
+</div>
+    <div class="division2">
+        <div class="nav-links">
+            <a href="#">ALL</a> 
+            <a href="#">Offers</a>
+             <a href="#">TopDeals</a>
+             <a href="#">Electonics</a> 
+             <a href="#">Top brands</a> <a href="#">Best sellers</a> 
+             <a href="#">Customer service</a>
+        </div>
+    </div>
+    </header>
+    <main class="main">
+        <div class="slider">
+            <div class="slides">
+                <img src="banner/image.png" alt="clothing" class="slide active">
+                <img src="banner/image1.png" alt="clothing" class="slide ">
+                <img src="banner/image2.webp" alt="clothing" class="slide ">
+                <img src="banner/image3.jpg" alt="clothing" class="slide ">
+             <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        
+        </div>
+        <script src="slide.js"></script>
+        <div id="filters">
+            <h4>Filter by Category</h4><div class="boxes">
+            <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+            <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+            <label><input type="checkbox" class="fil-cb" value="footwear">Foot wear</label>
+            <label><input type="checkbox" class="fil-cb" value="kitchen">kitchen</label>
+            <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+            <label><input type="checkbox" class="fil-cb" value="Accessories">Accessories</label>
+         <label><input type="checkbox" class="fil-cb" value="fitness">fitness</label>
+          <label><input type="checkbox" class="fil-cb" value="gaming">Gaming</label>
+     </div></div>
+        <div id="active-filters" style="margin-top: 10px;"></div>
+       <div> <h1 id="nothing" style="display:none">No products found.....</h1>
+        
+<section class="featured-products3">
+   <div class="fhead"> <h2>Featured Products</h2>
+    <select class="sort-options">
+        <option value="">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+    <div class="products-grid">
+        
+        
+    </div>
+    <button class="view-more-btn" data-section="feature-3">View More</button>
+</section>
+<div id="cart-pannel">
+    <h4>Your Cart</h4><div style="display:inline"><div id="cart-total" style="font-size: 20px; font-weight: bold; margin-top: 20px;"></div>
+    <div class="cartbu"><button  id="clearcart" onclick="clearcart()">Clear cart</button>
+    <button  id="checkout">Check out</button></div></div>
+    <div id="cart-items"></div>
+    
+  </div>
+<section class="featured-products1">
+    <div class="fhead"><h2>Top Deals</h2><select class="sort-options">
+        <option value="sort">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+    <div class="products-grid">
+       
+    </div>
+    <button class="view-more-btn" data-section="feature-1">View More</button>
+</section>
+<section class="featured-products2">
+    <div class="fhead"><h2>New Arivals</h2><select class="sort-options">
+        <option value="sort">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+      
+    <div class="products-grid">
+
+    </div>
+    <button class="view-more-btn" data-section="feature-2">View More</button>
+</section></div>
+
+<div class="model">
+    <span class="modal-close">&times;</span> 
+    <div class="model-content"> 
+        <div class="model-top">
+            <div class="model-head"></div> 
+            <div class="model-info"></div>
+        </div>
+    </div>
+</div>
+
+ <!-- CHATBOT HTML STRUCTURE -->
+<button class="chatbot-toggler">
+    <i class="fas fa-comment-dots"></i>
+</button>
+<div class="chatbot-container">
+    <div class="chatbot-header">
+        <h2>FAQ Assistant</h2>
+        <button class="chatbot-close-btn">&times;</button>
+    </div>
+    <div class="chatbox">
+        <div class="chat incoming">
+             <p>Hello! How can I assist you with our store's FAQs today?</p>
+        </div>
+    </div>
+    <div class="chat-input">
+        <textarea id="chat-input" placeholder="Ask a question..." required></textarea>
+        <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 MYShop. All rights reserved.</p>
+    </footer>
+    <div class="moverlay"></div>
+   
+    <div id="overlay"></div> <script src="shop.js"></script><script src="model.js"></script>  
+   
+  </body>
+</html>

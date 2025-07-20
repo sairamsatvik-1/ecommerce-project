@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="couts.css" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+<body>
+   <div class="header">
+    <h1>Check out products</h1>
+   </div> 
+   <marquee>*****fill the details and click on placeorder at bottom of page*****</marquee>
+   <div class="products">
+    <h2>Your products</h2>
+    <div class="cartitems">
+        
+    </div>
+    <div class="total"></div>
+   </div>
+   <div ></div>
+   <div class="fillform">
+    <div class="order">
+    <form>
+        <h2>Shipping Details</h2>
+        <label>
+            Enter your name:
+            <input type="text" id="username" placeholder="enter your name" pattren="\[A-Za-z]"required minlength="6">
+
+        </label>
+        <label>
+            Enter your email:
+            <input type="email" id="email" placeholder="enter your email" required >
+            
+        </label>
+        <label>
+            Enter your mobileno:
+            <input type="text" id="mobileno" placeholder="+91111111111" pattern="\d{10}" title="enter cirrect" required minlength="10">
+            
+        </label>
+        
+        <label>
+            Enter your address:
+            <textarea rows=8 cols=20 id="address" placeholder="H.no,lane,town,city,district ,state,pincode" ></textarea>
+            
+        </label>
+        <button type="submit" >Place Order</button>
+    </form>
+<img src="banner/order.png" alt="orderimg"></div>
+   </div>
+   <script src="cout.js"></script>
+</body>
+</html>

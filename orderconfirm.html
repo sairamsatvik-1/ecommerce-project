@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="order.css">
+    
+</head>
+<body style="margin:auto; display:flex; align-items:center; justify-content:center;">
+    <div class="order-success">
+        <h1>🎉 Thank You for Your Order!</h1>
+        <div class="user-details">
+            <p><strong>Name:</strong> <span id="username"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Mobile No:</strong> <span id="mobileno"></span></p>
+            <p><strong>Address:</strong> <span id="address"></span></p>
+            <p><strong>Payment ID:</strong> <span id="paymentid"></span></p>
+            <p><strong>Total Paid:</strong> $<span id="total"></span></p>
+        </div>
+        <button id="shopmore">Shop More</button>
+        <button id="download">Download</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script >const nameField = document.getElementById('username');
+        const emailField = document.getElementById('email');
+        const mobileField = document.getElementById('mobileno');
+        const addressField = document.getElementById('address');
+        const totalField = document.getElementById('total');
+        const shopMoreBtn = document.getElementById('shopmore');
+        const paymentIdField = document.getElementById('paymentid');
+paymentIdField.textContent = localStorage.getItem('paymentid');
+
+        nameField.textContent = localStorage.getItem('name');
+        emailField.textContent = localStorage.getItem('email');
+        mobileField.textContent = localStorage.getItem('mobileno');
+        addressField.textContent = localStorage.getItem('address');
+        totalField.textContent = localStorage.getItem('carttotal');
+        
+        
+        localStorage.removeItem('cartitems');
+        localStorage.removeItem('carttotal');
+        localStorage.removeItem('cartcount');
+          shopMoreBtn.addEventListener('click', () => {
+            window.location.replace("myproject.html");
+        });
+     
+        const downloadBtn = document.getElementById('download');
+
+        downloadBtn.addEventListener('click', () => {
+            const orderContent = document.querySelector('.order-success'); // capturing the div
+            html2pdf()
+                .from(orderContent)
+                .save('Order_Confirmation.pdf');
+        });
+        window.onload = function() {
+            history.replaceState(null, null, '/myproject.html'); // your main project page
+        };
+    
+        window.onpopstate = function() {
+            window.location.href = 'myproject.html'; 
+        };
+        </script>
+</body>
+</html>

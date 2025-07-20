@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myshop</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
+    <link href="pmodel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body >
+    <header class="header">
+       <div class="division1">
+         <div class="logoim"><img src="image.png"alt="shop">MYShop</div>
+        <div class="search-bar"><input type="search" id="search-bar" placeholder="search"> <button>search</button></div>
+       
+        <div class="nav-links">
+            <a href="account.html">Login/Signup</a><a href="#" id="cart" onclick="cart()"><i  class="fas fa-shopping-cart cart-icon"><span id="cp" >✨</span><span id="cp1" class="up1">✨</span><span id="cp2">✨</span></i><span class="count">(<span id="cart-count">0</span>)</span></a>
+        </div>
+    </div>
+        
+    <div class="division2">
+        <div class="nav-links">
+            <a href="#">ALL</a> 
+            <a href="#">Offers</a>
+             <a href="#">TopDeals</a>
+             <a href="#">Electonics</a> 
+             <a href="#">Top brands</a> <a href="#">Best sellers</a> 
+             <a href="#">Customer service</a>
+        </div>
+    </div>
+    </header>
+    <main class="main">
+        <div class="slider">
+            <div class="slides">
+                <img src="banner/image.png" alt="clothing" class="slide active">
+                <img src="banner/image1.png" alt="clothing" class="slide ">
+                <img src="banner/image2.webp" alt="clothing" class="slide ">
+                <img src="banner/image3.jpg" alt="clothing" class="slide ">
+            
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <script src="slide.js"></script>
+        <div id="filters">
+            <h4>Filter by Category</h4><div class="boxes">
+            <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+            <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+            <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+            <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+            <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+         <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+         <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+         <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+         <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+         <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+         <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+         <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+         <label><input type="checkbox" class="fil-cb" value="cloth">Clothing</label>
+         <label><input type="checkbox" class="fil-cb" value="electro">Electronics</label>
+         <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+      <label><input type="checkbox" class="fil-cb" value="books">Books</label>
+     </div></div>
+        <div id="active-filters" style="margin-top: 10px;"></div>
+       <div> <h1 id="nothing" style="display:none">No products found.....</h1>
+        
+<section class="featured-products3">
+   <div class="fhead"> <h2>Featured Products</h2>
+    <select class="sort-options">
+        <option value="">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+    <div class="products-grid">
+        <div class="products-card">
+            <h3>laptop</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $19.99</p>
+            <div class="buttons">
+                <button onclick="addcart('laptop',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+        </div>
+        <div class="products-card">
+            <h3>mobiles</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $18.99</p>
+           <div class="buttons"> <button onclick="addcart('mobiles',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+        </div>
+        <div class="products-card cloth">
+            <h3>men's T-shirts</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $122.99</p>
+           <div class="buttons"> <button onclick="addcart('smartphones',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+        </div>
+        <div class="products-card">
+            <h3>air conditioner</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $13.99</p>
+           <div class="buttons"> <button onclick="addcart('air conditioner',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+        </div>
+        <div class="products-card books">
+            <h3>Books</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $54.99</p>
+            <h6 class="descrip" style="display:none">.mprice{
+                font-size:20px;
+                background-color: rgb(11, 10, 52);
+                padding: 10px;
+                border-radius: 35%;
+                color: rgb(255, 213, 4);}
+                .mdes h4{
+                    margin-top: 0px;
+                    margin-bottom: 5px;
+                }
+                .mdes{
+                width: 100%;
+                max-height: 200px;
+                overflow-y: auto;
+                background-color: rgb(224, 211, 211);
+                border: 2px solid black;
+                padding: 8px;
+                border-radius: 5px;
+            }
+            .model-info button{
+                background-color: #ff9900;
+                border: none;
+                padding: 8px 12px;
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+            }description:book author given by jame contains a content if oprhf nefkjee fbgfgmfnvfhvenb bekhge kjbenehgneg whgigjgkf''oe'
+            </h6>
+          <div class="buttons">  <button onclick="addcart('books',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+        </div>
+        <div class="products-card electro">
+            <h3>Electronics</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $67.99</p>
+           <div class="buttons"> <button onclick="addcart('product1ghjkkkkkkkkkkkkkjjjjjjjjjj',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>
+    </div>
+        
+    </div>
+</section>
+<div id="cart-pannel">
+    <h4>Your Cart</h4><div style="display:inline"><div id="cart-total" style="font-size: 20px; font-weight: bold; margin-top: 20px;"></div>
+    <div class="cartbu"><button  id="clearcart" onclick="clearcart()">Clear cart</button>
+    <button  id="checkout">Check out</button></div></div>
+    <div id="cart-items"></div>
+    
+  </div>
+<section class="featured-products1">
+    <div class="fhead"><h2>Top Deals</h2><select class="sort-options">
+        <option value="sort">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+    <div class="products-grid">
+        <div class="products-card cloth">
+            <h3>fashion pro</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $1000</p>
+           <div class="buttons"> <button onclick="addcart('fashion pro',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div></div>
+        <div class="products-card">
+            <h3>kitchen</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $100.56</p>
+            <div class="buttons"><button onclick="addcart('kitchen',19.99,'ntr.webp')">Add to Cart</button>
+                <button class="quick-view" >Quick view</button>
+            </div></div>
+        <div class="products-card">
+            <h3>domain</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $19.99</p>
+            <div class="buttons"><button onclick="addcart('domain',19.99,'ntr.webp')">Add to Cart</button>
+                <button class="quick-view" >Quick view</button>
+            </div></div>
+        <div class="products-card electro">
+            <h3>Tv</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $1500.69</p>
+            <div class="buttons"><button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+                <button class="quick-view" >Quick view</button>
+            </div></div>
+        <div class="products-card">
+            <h3>product1</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $190.99</p>
+           <div class="buttons"> <button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div></div>
+        <div class="products-card cloths">
+            <h3>mens Trousers</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $10.99</p>
+            <div class="buttons"><button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+                <button class="quick-view" >Quick view</button>
+            </div></div>
+    </div>
+</section>
+<section class="featured-products2">
+    <div class="fhead"><h2>New Arivals</h2><select class="sort-options">
+        <option value="sort">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select></div>
+      
+    <div class="products-grid">
+
+        <div class="products-card electro">
+            <h3>Coolers</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $19.99</p>
+           <div class="buttons"><button onclick="addcart('product10',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div></div>
+      <div class="products-card electro">
+            <h3>Tv</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $1500.69</p>
+           <div class="buttons"> <button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div>  </div>
+        <div class="products-card">
+            <h3>product1</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $190.99</p>
+          <div class="buttons">  <button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+            <button class="quick-view" >Quick view</button>
+        </div></div>
+        <div class="products-card cloths">
+            <h3>mens Trousers</h3>
+            <img src="ntr.webp" alt="ntr">
+            <p>Price: $10.99</p>
+            <div class="buttons"><button onclick="addcart('product1',19.99,'ntr.webp')">Add to Cart</button>
+                <button class="quick-view" >Quick view</button>
+            </div></div>
+        
+
+    </div>
+</section></div>
+
+<div class="model">
+    <span class="modal-close">&times;</span> 
+    <div class="model-content"> 
+        <div class="model-top">
+            <div class="model-head"></div> 
+            <div class="model-info"></div>
+        </div>
+    </div>
+</div>
+
+
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 MYShop. All rights reserved.</p>
+    </footer>
+    <div class="moverlay"></div>
+   
+    <div id="overlay"></div> <script src="shop.js"></script><script src="model.js"></script>  
+  </body></body>
+</html>

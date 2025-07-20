@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Give Review</title>
+  <style>
+    .star { font-size: 30px; cursor: pointer; color: gray; }
+    .star.selected { color: gold; }
+  </style>
+</head>
+<body>
+  <h1>Give Review for Product</h1>
+  <select id="productSelect"></select>
+  <div id="stars">
+    <span class="star" data-val="1">&#9733;</span>
+    <span class="star" data-val="2">&#9733;</span>
+    <span class="star" data-val="3">&#9733;</span>
+    <span class="star" data-val="4">&#9733;</span>
+    <span class="star" data-val="5">&#9733;</span>
+  </div>
+  <p id="message"></p>
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.val;
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i < selectedRating; i++) stars[i].classList.add('selected');
+
+        const productId = document.getElementById('productSelect').value;
+        fetch('/api/reviews/submitreview', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: "include", 
+          body: JSON.stringify({ productId, rating: selectedRating })
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.message);
+          document.getElementById('message').innerText = "Rating submitted!";
+        });
+      });
+    });
+
+    fetch('http://localhost:3000/api/products') 
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById('productSelect');
+        data.forEach(prod => {
+          const opt = document.createElement('option');
+          opt.value = prod._id;
+          opt.innerText = prod.name;
+          select.appendChild(opt);
+        });
+      });
+    
+  </script>
+</body>
+</html>
