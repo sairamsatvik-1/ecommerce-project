@@ -51,6 +51,7 @@ app.get('/api/products', async (req, res) => {
     const query = section ? { section } : {};
     try {
           const products = await product.find(query).limit(limit);
+          console.log("products are",products);
         res.json(products);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch products' });
