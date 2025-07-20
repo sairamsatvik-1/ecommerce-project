@@ -79,7 +79,7 @@ loginerror.innerHTML="";
     const password = passwordInput.value;
     
 console.log(email,password)
-  const res=await fetch("http://localhost:3000/Login",{
+  const res=await fetch("/Login",{
     method:"POST",
     headers:{
       'Content-Type':"application/json",
@@ -142,7 +142,7 @@ if(!RegExp.test(passwordInput.value)){
 const email=emailInput.value;
 const password=passwordInput.value;
 const username=nameInput.value;
-const res=await fetch("http://localhost:3000/Otpsend",{
+const res=await fetch("/Otpsend",{
   method:"POST",
   headers:{
     "content-type":"application/json",
@@ -157,7 +157,7 @@ inputcontainer.style.display="none";
 verifyotp.addEventListener("click",async (e)=>{
   e.preventDefault();
   const otp=otpid.value;
-  const ores=await fetch("http://localhost:3000/otp",{
+  const ores=await fetch("/otp",{
     method:"POST",
     headers:{
       "content-type":"application/json",
