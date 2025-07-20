@@ -22,7 +22,7 @@ app.use(session({
     secret:"myshopsecret2005",
     resave:false,
     saveUninitialized:false,
-    store:MongoStore.create({mongoUrl:"mongodb://127.0.0.1:27017/myshop",collectionName:'sessions'}),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI, collectionName: 'sessions' }),
     cookie:{
         maxAge:1000*60*60*24,
         secure: false,
@@ -38,7 +38,7 @@ const transporter = nodemailer.createTransport({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://127.0.0.1:27017/myshop')
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('MongoDB connection error:', err));
 app.use('/api/cart', cartRoutes);
