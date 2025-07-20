@@ -28,6 +28,7 @@ app.use(session({
         secure: false,
     }
 }));
+app.use('/api/reviews', reviewRoutes);
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
