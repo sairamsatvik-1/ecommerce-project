@@ -195,7 +195,8 @@ app.get("/logout",async (req,res)=>{
     }
 });
 const reviewRoutes = require('./routes/reviews');
-app.use('/api/reviews', reviewRoutes);
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
