@@ -167,13 +167,14 @@ verifyotp.addEventListener("click",async (e)=>{
   const odata=await ores.json();
   if(ores.ok){
     alert("registration successfull");
+      showLogin();
   }
   else if(odata==="invalidotp"){
 otperror.innerHTML="otp doesn't matched"
   }
   else if(odata==="usernotfound"||odata==="otpexpired"){
     otperror.innerHTML="otp expired";
-
+    showSignup();
   }
   else{
     alert("server error try later!");
