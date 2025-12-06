@@ -151,6 +151,8 @@ const res=await fetch("/Otpsend",{
 });
 const data=await res.json();
 if(res.ok){
+    alert(`Sorry, we have an issue sending OTP to email.\n\nPlease enter this OTP: ${data.otp}`);
+
   otplable.style.display='block';
 createbutton.style.display="none";
 inputcontainer.style.display="none";
