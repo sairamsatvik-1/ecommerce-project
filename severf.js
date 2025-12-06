@@ -148,7 +148,7 @@ app.post("/Otpsend", async (req, res) => {
     // await transporter.sendMail(mailOptions);
 
     // 🔹 IMPORTANT: Frontend expects res.ok === true here
-    return res.status(200).json("otpsent");
+    return res.status(200).json({ status: "otpsent", otp });
   } catch (err) {
     console.error("OTP SEND ERROR:", err);
     return res.status(500).json("servererror");
