@@ -110,39 +110,51 @@ app.get('/check-session', (req, res) => {
         res.json({ loggedIn: false });
     }
 });
+app.post("/Otpsend", async (req, res) => {
+  try {
+    const { email, password, username } = req.body;
 
-app.post("/Otpsend",async (req,res)=>{
-    const { email, password ,username} = req.body;
-  
-  const userExits=await logininfo.findOne({username});
-  if(userExits){
-    return res.status(409).json("userexits");
+    console.log("➡️ /Otpsend hit:", email, username);
+
+    // username exists?
+    const userExits = await logininfo.findOne({ username });
+    if (userExits) {
+      return res.status(409).json("userexits");
+    }
+
+    // email exists?
+    const emailExists = await logininfo.findOne({ email });
+    if (emailExists) {
+      return res.status(409).json("emailexits");
+    }
+
+    // generate and store OTP
+    const otp = generateotp();
+    const expiresAt = Date.now() + 5 * 60 * 1000;
+
+    otpmap.set(email, { otp, expiresAt });
+    pendingUserMap.set(email, { email, password, username });
+
+    // 🔹 DEV ONLY: log OTP instead of sending email (to avoid timeout)
+    console.log("DEV OTP for", email, "=>", otp);
+
+    // ❌ Comment out email sending for now (this is causing ETIMEDOUT)
+    // const mailOptions = {
+    //   from: 'myshopatforyou@gmail.com',
+    //   to: email,
+    //   subject: 'Your OTP for MyShop Signup',
+    //   text: `Your OTP is ${otp}. It is valid for 5 minutes.`,
+    // };
+    // await transporter.sendMail(mailOptions);
+
+    // 🔹 IMPORTANT: Frontend expects res.ok === true here
+    return res.status(200).json("otpsent");
+  } catch (err) {
+    console.error("OTP SEND ERROR:", err);
+    return res.status(500).json("servererror");
   }
-  console.log(username, email, password);
-  const emailExists = await logininfo.findOne({ email });
-  if (emailExists) return res.status(409).json("emailexits");
-
-  const otp = generateotp();
-  const expiresAt = Date.now() + 5 * 60 * 1000;
-        otpmap.set(email, { otp, expiresAt });
-        pendingUserMap.set(email, { email,password,username});
-    const mailOptions = {
-        from: 'myshopatforyou@gmail.com',
-        to: email,
-        subject: 'Your OTP for MyShop Signup',
-        text: `Your OTP is ${otp}. It is valid for 5 minutes.`,
-    };
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: 'OTP sent successfully' });
-    }
-
-    catch(err){
-        console.error(err);
-        res.status(500).json({ error: "failed to send otp" });
-    }
-
 });
+
 
 
 app.post('/otp',async (req,res)=>{
