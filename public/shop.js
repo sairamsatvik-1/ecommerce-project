@@ -487,7 +487,7 @@ const createChatLi = (message, className) => {
     chatLi.innerHTML = chatContent;
     return chatLi;
 }
-
+const CHATBOT_API_BASE = "https://myshop-chatbot-api-1.onrender.com";
 const handleChat = async () => {
     const userMessage = chatInput.value.trim();
     if (!userMessage) return;
@@ -504,7 +504,7 @@ const handleChat = async () => {
 
     try {
         // IMPORTANT: This URL must match the address of your running Python server.
-        const response = await fetch("http://127.0.0.1:8000/chat", {
+        const response = await fetch(`${CHATBOT_API_BASE}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question: userMessage })
